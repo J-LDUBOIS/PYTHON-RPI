@@ -1,13 +1,15 @@
 # -*-coding:Utf-8 -*
 
 #declaration des variables & dictionnaires
-import donnee
-from scanner import fonction_scanner
-from traitement import test_adresse_mac, comparaison_heure
-from notification import boucle_notification
-from controle_parametrage import test_parametre
+from src.donnee import LISTE_ADRESSE_MAC
+from src.scanner import fonction_scanner
+from src.traitement import test_adresse_mac, comparaison_heure
+from src.notification import boucle_notification
+from src.controle_parametrage import test_parametre
 
-NOTIFICATION_ACTIVE = False #définition du booleen qui 
+
+
+NOTIFICATION_ACTIVE = False #définition du booleen qui active la boucle infinie
 
 #validation du paramétrage
 while NOTIFICATION_ACTIVE is False:
@@ -15,23 +17,23 @@ while NOTIFICATION_ACTIVE is False:
 
 #boucle infini tant que la notification est activée
 while NOTIFICATION_ACTIVE is True:
-    RESEAUX_SCANNEES = [] #stock les adresses Mac scannees
-    RESEAUX_SCANNEES = fonction_scanner(5) #scan de 5 secondes des BLE du périmètre
+    RESEAUX_SCANNES = [] #stock les adresses Mac scannees
+    RESEAUX_SCANNES = fonction_scanner(4.0) #scan de 5 secondes des BLE du périmètre
 
-    RESEAUX_TRAITETEMENT = [] #stockage provisoire des adresses Mac à traiter
-    RESEAUX_TRAITETEMENT = RESEAUX_SCANNEES #liberation de la liste de BLE scannes
+    RESEAUX_TRAITEMENT = [] #stockage provisoire des adresses Mac à traiter
+    RESEAUX_TRAITEMENT = RESEAUX_SCANNES #liberation de la liste de BLE scannes
 
-    if RESEAUX_TRAITETEMENT != "": #traitement adresse mac si data du scan
+    if RESEAUX_TRAITEMENT != []: #traitement adresse mac si data du scan
         CAPTEURS_SCANNES = []
         #vérification liste de capteur scannes
-        CAPTEURS_SCANNES = test_adresse_mac(RESEAUX_TRAITETEMENT, capteur.mac)
+        CAPTEURS_SCANNES = test_adresse_mac(RESEAUX_TRAITEMENT, LISTE_ADRESSE_MAC)
 
-        if CAPTEURS_SCANNES != "": #traitement délai notification si data du traitement adresse mac
+        if CAPTEURS_SCANNES != []: #traitement délai notification si data du traitement adresse mac
             CAPTEURS_NOTIFIES = []
             #vérification latence notification > 60 secondes
-            CAPTEURS_NOTIFIES = comparaison_heure(CAPTEURS_SCANNES, donnee.dictionnaireNotif)
+            CAPTEURS_NOTIFIES = comparaison_heure(CAPTEURS_SCANNES)
 
-            if CAPTEURS_NOTIFIES != "": #envoi d'une notification si data du traitement délai notification
+            if CAPTEURS_NOTIFIES != []: #envoi d'une notification si data du traitement délai notification
                 #envoi notification
                 boucle_notification(CAPTEURS_NOTIFIES)
     RESEAUX_TRAITETEMENT = []

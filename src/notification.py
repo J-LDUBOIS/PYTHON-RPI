@@ -1,11 +1,12 @@
 # -*-coding:Utf-8 -*
-import donnee
+import src.donnee
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 #parametre de l'email 
 def envoiEmail(adresseMac):
+    """fonction d'envoi d'email selon des paramètres de destinataire et de capteur"""
     fromaddr = "email"
     mdpfroaddr = "mdp"
     toaddr = "alexi.bdn@gmail.com"
@@ -29,7 +30,8 @@ def envoiEmail(adresseMac):
     server.sendmail(fromaddr, rcpt, text)
     server.quit()
 
-
-def boucleNotification(listeCapteur):
-    for mac in listeCapteur:
-        envoiEmail(listeCapteur[mac])
+def boucle_notification(capteur_notifie):
+    """boucle qui envoie autant de mail que de capteur identifie par le traitement"""
+    for mac in capteur_notifie:
+        envoiEmail(mac.mac)
+        
