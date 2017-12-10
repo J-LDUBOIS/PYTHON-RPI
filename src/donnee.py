@@ -7,7 +7,7 @@ import csv
 
 def initialiser_capteur():
     """récupérer email dans fichier parametre_email.csv et retourner une liste"""
-    with open("/home/alexis/Dropbox/Projet_Python/Logiciel_RPI/data/capteur_a_creer.csv") as file:
+    with open("/home/pi/Logiciel_RPI/data/capteur_a_creer.csv") as file:
         capteur_a_creer = list(csv.reader(file, delimiter=';'))
     return capteur_a_creer
 
@@ -30,7 +30,7 @@ for capteurs in LISTE_ADRESSE_MAC:
 
 def initialiser_non_capteur():
     """récupérer nom capteur de l'objet associé et retourner une liste"""
-    with open("/home/alexis/Dropbox/Projet_Python/Logiciel_RPI/data/parametre_nom_capteur.csv") as file:
+    with open("/home/pi/Logiciel_RPI/data/parametre_nom_capteur.csv") as file:
         capteur_a_creer = list(csv.reader(file, delimiter=':'))
     return capteur_a_creer
 
