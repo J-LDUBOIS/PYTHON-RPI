@@ -20,7 +20,7 @@ def test_ping():
 
 def extraire_email():
     """récupérer email dans fichier parametre_email.csv et retourner une liste"""
-    with open("/home/pi/Logiciel_RPI/data/parametre_email.csv") as file:
+    with open("/home/pi/logiciel_RPI/data/parametre_email.csv") as file:
         parametre_email = list(csv.reader(file, delimiter=';'))
     return parametre_email
 
