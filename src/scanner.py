@@ -16,3 +16,5 @@ def fonction_scanner(seconde):
     for dev in devices:
         liste_scan.append(dev.addr)
     return liste_scan
+
+fonction_scanner(4.0)
