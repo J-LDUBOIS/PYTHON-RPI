@@ -14,8 +14,8 @@ def test_adresse_mac(adresses_mac, liste_capteur):
 
 def comparaison_heure(capteur_valide):
     """traitement des capteurs identifié pour contrôler si dernière notification est > 60 sec"""
+    capteur_notifie = []
     for amac in capteur_valide:
-        capteur_notifie = []
         ecart_notif = datetime.now().replace(microsecond=0) - LISTE_NOTIFICATION_ASSOCIE[amac]
         if ecart_notif.seconds > 60:
             capteur_notifie.append(amac)
