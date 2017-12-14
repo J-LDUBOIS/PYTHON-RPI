@@ -23,16 +23,12 @@ while NOTIFICATION_ACTIVE is True:
     except:
         RESEAUX_SCANNES = fonction_scanner(4.0) #scan de X secondes des BLE du périmètre
 
-    RESEAUX_TRAITEMENT = [] #stockage provisoire des adresses Mac à traiter
     RESEAUX_TRAITEMENT = RESEAUX_SCANNES #liberation de la liste de BLE scannes
-
     if RESEAUX_TRAITEMENT != []: #traitement adresse mac si data du scan
-        CAPTEURS_SCANNES = []
         #vérification liste de capteur scannes
         CAPTEURS_SCANNES = test_adresse_mac(RESEAUX_TRAITEMENT, LISTE_ADRESSE_MAC)
 
         if CAPTEURS_SCANNES != []: #traitement délai notification si data du traitement adresse mac
-            CAPTEURS_NOTIFIES = []
             CAPTEURS_NOTIFIES = comparaison_heure(CAPTEURS_SCANNES) #vérification latence notification > 60 secondes
 
             if CAPTEURS_NOTIFIES != []: #envoi d'une notification si data du traitement délai notification
