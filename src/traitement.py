@@ -8,7 +8,6 @@ def test_adresse_mac(adresses_mac, liste_capteur):
     capteurs_scannes = []
     for mac2 in adresses_mac:
         if mac2 in liste_capteur:
-            print ("Réseau {} trouvé".format(LISTE_NOM_ASSOCIE[mac2]))
             capteurs_scannes.append(mac2)
     return capteurs_scannes
 
