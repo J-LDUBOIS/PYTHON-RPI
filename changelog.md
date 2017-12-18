@@ -1,10 +1,21 @@
 # Changelog
 
 ---
+## v0.3.0
 
-## v0.2.1
+**Author**: Alexis Bodin
 
-**Author**: Guillaume Mousnier
+**Type**: Feature
+
+**Changes**:
+
+- Final functional version.
+
+--
+
+## v0.2.O
+
+**Author**: Alexis Bodin
 
 **Type**: Feature
 
@@ -16,7 +27,7 @@
 
 ## v0.1.0
 
-**Author:** Guillaume Mousnier
+**Author:** Alexis Bodin
 
 **Type:** Feature
 
