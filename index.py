@@ -12,7 +12,10 @@ from src.notification import boucle_notification
 from src.scanner import scan
 from src.traitement import comparaison_heure, test_adresse_mac
 
-auto_mount()
+try:
+    auto_mount()
+except:
+    pass
 
 NOTIFICATION_ACTIVE = False  # définition du booleen qui active la boucle infinie
 
