@@ -1,15 +1,19 @@
 # -*-coding:Utf-8 -*
-"""Contrôle que les paramètres minimum pour lancer le programme
+"""
+Contrôle que les paramètres minimum pour lancer le programme
 on teste :
 la connexion wifi via un ping
 le paramétrage des adresses emails pour l'envoi des notifications
-le paramétrage des noms associés aux capteurs"""
+le paramétrage des noms associés aux capteurs
+
+"""
+
 import csv
 from src.donnee import LISTE_NOM_A_ASSOCIER
+import os
 
 def test_ping():
-    """tester le ping de google pour vérifier la connexion au wifi"""
-    import os
+    """tester le ping de google pour vérifier la connexion au wifi."""
     hostname = "8.8.8.8"
     response = os.system("ping -c 1 " + hostname)
     if response == 0:
